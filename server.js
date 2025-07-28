@@ -2,9 +2,11 @@ import express from 'express'
 import mongoose from 'mongoose'
 import routes from './routes/index.js'
 import dotenv from 'dotenv'
+import path from 'path'
 import authenticate from './middlewares/authenticate.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerSpec from './docs/swagger.js'
+import { fileURLToPath } from 'url'
 
 dotenv.config()
 
@@ -18,8 +20,14 @@ mongoose
     .then(() => console.log('DB connected!'))
     .catch((err) => console.error('DB error:', err))
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+// serve static files from public
+app.use(express.static(path.join(__dirname, 'public')))
 // base route
-app.get('/', express.static('public'))
+app.get('/', (_, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
+
 // swagger docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
