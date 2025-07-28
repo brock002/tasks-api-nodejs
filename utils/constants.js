@@ -1,8 +1,8 @@
 export const PRIORITIES = ['high', 'medium', 'low']
 
 export const NO_AUTH_PATHS = [
-    { path: '/register', methods: ['POST'] },
-    { path: '/login', methods: ['POST'] },
+    { path: '/api/register', methods: ['POST'] },
+    { path: '/api/login', methods: ['POST'] },
 ]
 
 export const MESSAGES = {
