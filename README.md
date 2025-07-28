@@ -116,12 +116,6 @@ Bearer <your_token_here>
 
 ---
 
-## 🙌 Contributing
-
-Pull requests are welcome. For major changes, please open an issue first.
-
----
-
 ## ✨ Acknowledgments
 
 -   [Express](https://expressjs.com)
